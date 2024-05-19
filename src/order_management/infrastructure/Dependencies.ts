@@ -6,11 +6,13 @@ import { MysqlOrderProductRepository } from "./repositories/MysqlOrderProductRep
 import { UpdateStatusOrderController } from "./controllers/UpdateStatusOrderController";
 import { ListOrderUseCase } from "../application/use_cases/ListOrdersUseCase";
 import { ListOrderController } from "./controllers/ListOrdersController";
+import { PublisherRabbitMQImpl } from "./services/rabbitMQ/publishers/PublisherRabbitMQImpl";
 
 export const dbOrder = new MysqlOrderRepository()
 export const dbOrderProduct = new MysqlOrderProductRepository()
+export const rabbitMQ = new PublisherRabbitMQImpl
 
-export const updateStatusOrderUseCase = new UpdateStatusOrderUseCase(dbOrder)
+export const updateStatusOrderUseCase = new UpdateStatusOrderUseCase(dbOrder, rabbitMQ, dbOrderProduct)
 export const updateStatusOrderController = new UpdateStatusOrderController(updateStatusOrderUseCase)
 
 export const createOrderUseCase = new CreateOrderUseCase(dbOrder, dbOrderProduct)

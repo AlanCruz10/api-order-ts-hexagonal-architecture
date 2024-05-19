@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export class OrderProduct {
 
-    public readonly uuid: string;
+    public uuid: string;
     public price: number;
     public quantity: number;
     public productId: string;

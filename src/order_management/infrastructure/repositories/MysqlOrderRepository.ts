@@ -1,4 +1,4 @@
-import { query } from "../../database/mysql";
+import { query } from "../configurations/database/mysql";
 import { Order } from "../../domain/entities/Order";
 import { IOrderRepository } from "../../domain/repositories/IOrderRepository";
 import { Signale } from 'signale';
